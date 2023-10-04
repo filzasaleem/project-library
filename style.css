@@ -1,0 +1,87 @@
+body {
+    background: white;
+    color: black;
+    max-width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+}
+
+.container {
+    text-align: center; /* Center the text horizontally */
+    margin-top: 3rem;
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+
+.filter-sorting {
+    display: flex;
+    justify-content: space-between; /* Pushes items to the sides */
+    align-items: center;
+    margin-bottom: 20px; /* Add margin to separate from book gallery */
+}
+
+#filter {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 6px 9px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #ddd;
+  }
+  
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+
+
+.books-gallery { 
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+    gap: 10px; /* Adjust the gap between images */
+}
+
+
+.book-container {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.book-container img {
+    width: 200px; /* Set a fixed width for all images */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+/* Style for book titles */
+.book-title {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Style for book genres */
+.book-genre {
+    font-style: italic;
+    color: #555;
+}
+.book-description,
+.book-year {
+    display: none; 
+}
