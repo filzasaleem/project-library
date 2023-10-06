@@ -63,16 +63,6 @@ const books = [
       'A fantasy adventure novel that follows Bilbo Baggins on a quest to help a group of dwarves reclaim their homeland from a dragon.',
     image: './books-images/the-hobbit.jpg'
   },
-  // {
-  //   title: "Harry Potter and the Sorcerer's Stone",
-  //   author: 'J.K. Rowling',
-  //   year: 1997,
-  //   genre: 'Fantasy',
-  //   rating: 4.7,
-  //   description:
-  //     'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-  //   image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
-  // },
   {
     title: 'Moby-Dick',
     author: 'Herman Melville',
@@ -186,12 +176,13 @@ const books = [
 ]
 
 let filterGenre = [];
-let sortedBooks = books;
+let sortedBooks = [...books];
 let toggle = true;
 
 const filterDropdown = document.getElementById("filterDropdown");
 const booksGallery = document.getElementById("books-gallery");
 const sorlList  = document.getElementById("sorlList");
+const searchQuery = document.getElementById("search");
 
 const displayBooks = (booksArray) => {
 
@@ -210,13 +201,12 @@ const displayBooks = (booksArray) => {
 
 const filterBooks= () => {
   // Get the selected value from the filter dropdown.
-  const value = filterDropdown.value;
-  if (value.toLocaleLowerCase === "all") {
+  const value = filterDropdown.value.toLowerCase();
+  if (value === "all") {
     
     displayBooks(books);
   }else {
-    const filterGenre = books.filter((book) => book.genre.toLocaleLowerCase() == value.toLocaleLowerCase());
-    console.log(filterGenre.length);
+    const filterGenre = books.filter((book) => book.genre.toLowerCase() == value);
     displayBooks(filterGenre);
   }
 
@@ -225,20 +215,43 @@ const filterBooks= () => {
 const sortBooks= ()=>{
     
     const sortingValue = sorlList.value;
-    console.log(sortingValue);
-    if (sortingValue.toLocaleLowerCase === "unsorted") {
-      sortedBooks = books;
+    if(sortingValue === "unsorted") {
+      sortedBooks = [...books]; 
+     
     }else if(sortingValue === "new"){
+      sortedBooks = [...books]; 
       sortedBooks.sort((bookA, bookB) => bookB.year - bookA.year);
     }else if(sortingValue === "old"){
+      sortedBooks = [...books]; 
       sortedBooks.sort((bookA, bookB) => bookA.year - bookB.year);
     }else if(sortingValue === "century"){
+       sortedBooks = [...books]; 
        sortedBooks = books.filter((book) => book.year >= 2001 );
     }
     
    displayBooks(sortedBooks);
 
 };
+
+
+  const  performSearch = () => {
+    const searchBarValue = searchQuery.value.toLowerCase(); 
+    const foundBooks = books.filter((book) =>
+      containsCaseInsensitive(book.title, searchBarValue)
+    );
+    if (foundBooks.length > 0) {
+      displayBooks(foundBooks);
+    } else {
+      displayBooks(books);
+    }
+  ;}
+  
+  // Custom function to perform case-insensitive search
+  const containsCaseInsensitive= (source, query) =>{
+    return source.toLowerCase().includes(query);
+  };
+  
+
 
 filterDropdown.addEventListener("change", filterBooks);
 sorlList.addEventListener("change", sortBooks);

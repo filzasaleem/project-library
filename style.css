@@ -19,34 +19,25 @@ h1 {
 
 
 .filter-sorting {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    margin-bottom: 20px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-#filter {
-    display: flex;
-    gap: 10px;
+#filter,
+.sort,
+.search-container {
+  flex: 1; /* Distribute the available space equally */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 
-
-.btn {
-    border: none;
-    outline: none;
-    padding: 6px 9px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-  }
-  
-  .btn:hover {
-    background-color: #ddd;
-  }
-  
-  .btn.active {
-    background-color: #666;
-    color: white;
-  }
+.search-container {
+  justify-content: flex-end; /* Push search bar to the right */
+}
 
 
 #filterDropdown {
