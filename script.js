@@ -186,10 +186,12 @@ const books = [
 ]
 
 let filterGenre = [];
+let sortedBooks = books;
 let toggle = true;
 
-const filterlist = document.getElementById("filterDropdown");
+const filterDropdown = document.getElementById("filterDropdown");
 const booksGallery = document.getElementById("books-gallery");
+const sorlList  = document.getElementById("sorlList");
 
 const displayBooks = (booksArray) => {
 
@@ -220,18 +222,25 @@ const filterBooks= () => {
 
 };
 
-const sortList= ()=>{
-    if(toggle== true){
-        books.sort((bookA, bookB) => bookA.year - bookB.year);
-        toggle = false
-    } else{
-        books.sort((bookA, bookB) => bookB.year - bookA.year);
-        toggle = true
+const sortBooks= ()=>{
+    
+    const sortingValue = sorlList.value;
+    console.log(sortingValue);
+    if (sortingValue.toLocaleLowerCase === "unsorted") {
+      sortedBooks = books;
+    }else if(sortingValue === "new"){
+      sortedBooks.sort((bookA, bookB) => bookB.year - bookA.year);
+    }else if(sortingValue === "old"){
+      sortedBooks.sort((bookA, bookB) => bookA.year - bookB.year);
+    }else if(sortingValue === "century"){
+       sortedBooks = books.filter((book) => book.year >= 2001 );
     }
-     displayBooks(books);
+    
+   displayBooks(sortedBooks);
 
-}
+};
 
 filterDropdown.addEventListener("change", filterBooks);
+sorlList.addEventListener("change", sortBooks);
 displayBooks(books);
 
