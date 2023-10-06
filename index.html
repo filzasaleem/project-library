@@ -12,94 +12,36 @@
     <h1>Project Library</h1>
 </div>
 <div class="filter-sorting">
-  <div id="filter">
-    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('Fantasy')"> Fantasy</button>
-    <button class="btn" onclick="filterSelection('Adventure')"> Adventure</button>
-    <button class="btn" onclick="filterSelection('Mystery')"> Mystery</button>
-    <button class="btn" onclick="filterSelection('Fiction')"> Fiction</button>
-    <button class="btn" onclick="filterSelection('Horror')"> Horror</button>
-    <button class="btn" onclick="filterSelection('Dystopian')"> Dystopian</button>
-    
-  </div>
-  <div id="sort">
-    <button class="btn" onclick="sortList()"> Sort </button>
-    
-</div>
-</div>
-
-<div id = "books" class="books-gallery"> 
-    <div class="book-container Fantasy">
-        <img src="./books-images/harry-potter-and-the-sorcerer.jpg" alt="harry-potter">
-        <div class="book-title">Harry Potter and the Sorcerer's Stone</div>
-        <div class="book-genre">Fantasy</div>
-        <div class="book-description">The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.</div>
-        <div class="book-year">Year: 1997</div>
+<div id="filter">
+    <select id="filterDropdown">
+      <option value="All">ALL</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Horror">Horror</option>
+      <option value="Dystopian">Dystopian</option>
+      <option value="Science Fiction">Science Fiction</option>
+    </select>
+  </div> 
+      <div id="sort">
+        <button class="btn" onclick="sortList()"> Sort </button>    
     </div>
-    <div class="book-container Adventure">
-        <img src="./books-images/moby-dick.jpg" alt="moby-dick">
-        <div class="book-title">Moby Dick</div>
-        <div class="book-genre">Adventure</div>
-        <div class="book-description">'An epic tale of obsession, revenge, and the relentless pursuit of the great white whale, Moby Dick.</div>
-        <div class="book-year">Year: 1851</div>
-    </div>
-    <div class="book-container Fiction">
-        <img src="./books-images/pride-and-prejudice.jpg" alt="pride-and-prejudice">
-        <div class="book-title">Pride and Prejudice</div>
-        <div class="book-genre">Fiction</div>
-        <div class="book-description">A timeless romance novel that examines societal expectations and the misunderstandings that can arise from pride and prejudice.</div>
-        <div class="book-year">Year: 1813</div>
-    </div>
-    <div class="book-container Fantasy">
-      <img src="./books-images/the-chronicles-of-narnia.jpg" alt="the-chronicles-of-narnia">
-      <div class="book-title">The Chronicles of Narnia: The Lion, the Witch and the Wardrobe</div>
-        <div class="book-genre">Fantasy</div>
-        <div class="book-description">The first book in the Chronicles of Narnia series, it follows the adventures of children who discover the magical land of Narnia.</div>
-        <div class="book-year">Year: 1950</div>
-     </div>
-    <div class="book-container Fiction">
-      <img src="./books-images/the-great-gatsby.jpg" alt="the-great-gatsby">
-      <div class="book-title">The Great Gatsby</div>
-      <div class="book-genre">Fiction</div>
-      <div class="book-description">A classic novel set in the Roaring Twenties, it explores themes of wealth, love, and the American Dream through the enigmatic Jay Gatsby.</div>
-      <div class="book-year">Year: 1925</div>
-    </div>
-    <div class="book-container Fantasy">
-      <img src="./books-images/the-hobbit.jpg" alt="the-hobbit">
-      <div class="book-title">The Hobbit</div>
-      <div class="book-genre">Fantasy</div>
-      <div class="book-description">A fantasy adventure novel that follows Bilbo Baggins on a quest to help a group of dwarves reclaim their homeland from a dragon.</div>
-      <div class="book-year">Year: 1937</div>
-    </div>
-    <div class="book-container Fantasy">books
-      <img src="./books-images/the-lord-of-the-rings.jpg" alt="the-lord-of-the-rings">
-      <div class="book-title">The Lord of the Rings</div>
-      <div class="book-genre">Fantasy</div>
-      <div class="book-description">The first volume of the epic fantasy trilogy follows Frodo Baggins and the Fellowship on their quest to destroy the One Ring.</div>
-      <div class="book-year">Year: 1954</div>
-   </div>
-    <div class="book-container Fiction">
-      <img src="./books-images/to-kill-a-mockingbird.jpg" alt="to-kill-a-mockingbird">
-      <div class="book-title">To Kill a Mockingbird</div>
-      <div class="book-genre">Fiction</div>
-      <div class="book-description">Set in the American South, this novel tackles issues of racism and injustice through the eyes of young Scout Finch.</div>
-      <div class="book-year">Year: 1960</div>
-   </div>
-   <div class="book-container Fiction">
-      <img src="./books-images/1984.jpg" alt="1984">
-      <div class="book-title">1984</div>
-      <div class="book-genre">Science Fiction</div>
-      <div class="book-description">A dystopian classic that explores totalitarianism and the consequences of a surveillance state in a bleak future.</div>
-      <div class="book-year">Year: 1949</div>
-   </div>
-
 </div>
 
 
 
-<script src ="./script.js"></script>
+<div id="books-gallery">
+</div>
+
+
+
+<script src="script.js"></script>
 </body>
 </html>
+
+
+
 
 
 

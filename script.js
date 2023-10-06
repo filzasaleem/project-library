@@ -63,16 +63,16 @@ const books = [
       'A fantasy adventure novel that follows Bilbo Baggins on a quest to help a group of dwarves reclaim their homeland from a dragon.',
     image: './books-images/the-hobbit.jpg'
   },
-  {
-    title: "Harry Potter and the Sorcerer's Stone",
-    author: 'J.K. Rowling',
-    year: 1997,
-    genre: 'Fantasy',
-    rating: 4.7,
-    description:
-      'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
-  },
+  // {
+  //   title: "Harry Potter and the Sorcerer's Stone",
+  //   author: 'J.K. Rowling',
+  //   year: 1997,
+  //   genre: 'Fantasy',
+  //   rating: 4.7,
+  //   description:
+  //     'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
+  //   image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
+  // },
   {
     title: 'Moby-Dick',
     author: 'Herman Melville',
@@ -185,74 +185,53 @@ const books = [
   }
 ]
 
-let firstTime = 0;
-let toggle;
+let filterGenre = [];
+let toggle = true;
 
-function filterSelection(genre) {
-  var myBooks = document.getElementsByClassName("book-container");
-  
-  if (genre === "all") {
-      // Show all books if "Show all" button is clicked
-      for (let i = 0; i < myBooks.length; i++) {
-          myBooks[i].style.display = "block";
-      }
-  } else {
-      // Hide all books first
-      for (var i = 0; i < myBooks.length; i++) {
-          myBooks[i].style.display = "none";
-      }
-      // Show books in the selected genre
-      var filteredBooks = document.getElementsByClassName(genre);
-      for (var i = 0; i < filteredBooks.length; i++) {
-          filteredBooks[i].style.display = "block";
-      }
+const filterlist = document.getElementById("filterDropdown");
+const booksGallery = document.getElementById("books-gallery");
+
+const displayBooks = (booksArray) => {
+
+    booksGallery.innerHTML = "";
+
+    booksArray.forEach((book) => {   
+      booksGallery.innerHTML += ` 
+      <div class="book-container">
+        <p class="book-title">${book.title}</p>
+        <img src="${book.image}">  
+        <p class="book-genre">${book.genre}</p>
+      </div> `
+    });
+
+};
+
+const filterBooks= () => {
+  // Get the selected value from the filter dropdown.
+  const value = filterDropdown.value;
+  if (value.toLocaleLowerCase === "all") {
+    
+    displayBooks(books);
+  }else {
+    const filterGenre = books.filter((book) => book.genre.toLocaleLowerCase() == value.toLocaleLowerCase());
+    console.log(filterGenre.length);
+    displayBooks(filterGenre);
   }
-  
-  // Update the active button
-  var btns = document.getElementsByClassName("btn");
-  for (var i = 0; i < btns.length; i++) {
-      btns[i].classList.remove("active");
-  }
-  document.querySelector('[onclick="filterSelection(\'' + genre + '\')"]').classList.add("active");
+
+};
+
+const sortList= ()=>{
+    if(toggle== true){
+        books.sort((bookA, bookB) => bookA.year - bookB.year);
+        toggle = false
+    } else{
+        books.sort((bookA, bookB) => bookB.year - bookA.year);
+        toggle = true
+    }
+     displayBooks(books);
+
 }
 
+filterDropdown.addEventListener("change", filterBooks);
+displayBooks(books);
 
-
-
-function sortList() {
-
-  
-
-    var booksContainer = document.getElementById('books');
-    var bookContainers = Array.from(booksContainer.getElementsByClassName('book-container'));
-   
-   if(firstTime == 0 || toggle == false){
-    // Sort book containers based on the year
-    bookContainers.sort(function(a, b) {
-        var yearA = parseInt(a.querySelector('.book-year').textContent.replace('Year: ', ''));
-        var yearB = parseInt(b.querySelector('.book-year').textContent.replace('Year: ', ''));
-        return yearB - yearA;
-    });
-    toggle = true;
-    firstTime = 1;
-  }else if(toggle == true){
-      bookContainers.sort(function(a, b) {
-      var yearA = parseInt(a.querySelector('.book-year').textContent.replace('Year: ', ''));
-      var yearB = parseInt(b.querySelector('.book-year').textContent.replace('Year: ', ''));
-      return yearA - yearB;
-  });
-    toggle = false;
-  }
-    
-    // Clear the existing content
-    while (booksContainer.firstChild) {
-        booksContainer.removeChild(booksContainer.firstChild);
-    }
-    
-    // Append sorted book containers back to the container
-    bookContainers.forEach(function(bookContainer) {
-        booksContainer.appendChild(bookContainer);
-    });
-   
-
-  }

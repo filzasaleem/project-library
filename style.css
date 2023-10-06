@@ -12,6 +12,7 @@ body {
 }
 
 h1 {
+  
     font-size: 36px;
     color: #333;
 }
@@ -19,16 +20,15 @@ h1 {
 
 .filter-sorting {
     display: flex;
-    justify-content: space-between; /* Pushes items to the sides */
+    justify-content: space-between; 
     align-items: center;
-    margin-bottom: 20px; /* Add margin to separate from book gallery */
+    margin-bottom: 20px; 
 }
 
 #filter {
     display: flex;
     gap: 10px;
 }
-
 
 
 .btn {
@@ -49,39 +49,40 @@ h1 {
   }
 
 
-
-.books-gallery { 
-    padding-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-    gap: 10px; /* Adjust the gap between images */
+#filterDropdown {
+  margin-bottom: 14px;
 }
 
+#books-gallery {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
 
 .book-container {
+
     text-align: center;
     border: 1px solid #ccc;
     padding: 10px;
+
 }
 
 .book-container img {
-    width: 200px; /* Set a fixed width for all images */
-    height: 200px; /* Set a fixed height for all images */
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
+
+  width: 200px; 
+  height: 200px; 
+  object-fit: cover;
 }
 
-/* Style for book titles */
 .book-title {
     font-weight: bold;
     margin-top: 5px;
 }
-
-/* Style for book genres */
 .book-genre {
     font-style: italic;
     color: #555;
-}
-.book-description,
-.book-year {
-    display: none; 
-}
+} 
+
+
+
+
