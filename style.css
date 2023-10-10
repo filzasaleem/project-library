@@ -69,7 +69,7 @@ h1 {
     font-weight: bold;
     margin-top: 5px;
 }
-.book-genre {
+.book-genre,.book-year,.book-description,.book-rating {
     font-style: italic;
     color: #555;
 } 

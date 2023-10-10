@@ -193,11 +193,15 @@ const displayBooks = (booksArray) => {
       <div class="book-container">
         <p class="book-title">${book.title}</p>
         <img src="${book.image}">  
-        <p class="book-genre">${book.genre}</p>
+        <p class="book-genre"><strong>Genre:</strong>${book.genre}</p>
+        <p class="book-year"><strong>Year:</strong>${book.year}</p>
+        <p class="book-rating"><strong>Rating:</strong>${book.rating}</p>
+        <p class="book-description"><strong>Description:</strong>${book.description}</p>
       </div> `
     });
 
 };
+
 
 const filterBooks= () => {
   // Get the selected value from the filter dropdown.
