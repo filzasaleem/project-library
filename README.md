@@ -15,5 +15,5 @@ The application showcases a collection of books stored in an object. Users have 
  4. css
  
 ## View it live
-https://filzas-books-library.netlify.app/
+Experience the Library App live: [Filza's library App ](https://filzas-books-library.netlify.app/)
 
